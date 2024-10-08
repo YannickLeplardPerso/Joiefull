@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AC4765762CB3DBAA008F7324 /* JoiefullApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4765752CB3DBAA008F7324 /* JoiefullApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AC4765722CB3DBAA008F7324 /* Joiefull.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joiefull.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC4765752CB3DBAA008F7324 /* JoiefullApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		AC4765692CB3DBAA008F7324 = {
 			isa = PBXGroup;
 			children = (
+				AC4765752CB3DBAA008F7324 /* JoiefullApp.swift */,
 				AC4765742CB3DBAA008F7324 /* Joiefull */,
 				AC4765732CB3DBAA008F7324 /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC4765762CB3DBAA008F7324 /* JoiefullApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +257,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "2 en cours";
 				DEVELOPMENT_ASSET_PATHS = "\"Joiefull/Preview Content\"";
 				DEVELOPMENT_TEAM = 9L643QCQAN;
 				ENABLE_PREVIEWS = YES;
@@ -283,7 +290,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "2 en cours";
 				DEVELOPMENT_ASSET_PATHS = "\"Joiefull/Preview Content\"";
 				DEVELOPMENT_TEAM = 9L643QCQAN;
 				ENABLE_PREVIEWS = YES;
