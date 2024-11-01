@@ -1,5 +1,5 @@
 //
-//  SplashScreenView.swift
+//  JFSplashScreenView.swift
 //  Joiefull
 //
 //  Created by Yannick LEPLARD on 07/10/2024.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct SplashScreenView: View {
+struct JFSplashScreenView: View {
     private let splashScreenDuration: TimeInterval = 2
     @State private var isActive = false // Gérer l'état de l'écran de démarrage
 
     var body: some View {
         VStack {
             if isActive {
-                CatalogView()
+                JFCatalogView()
             } else {
                 ZStack {
                     Color(.colorJFOrange)
@@ -44,6 +44,6 @@ struct SplashScreenView: View {
     }
 }
 
-//#Preview {
-//    SplashScreenView()
-//}
+#Preview {
+    JFSplashScreenView()
+}

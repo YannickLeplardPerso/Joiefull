@@ -1,5 +1,5 @@
 //
-//  CategoryListView.swift
+//  JFCategoryListView.swift
 //  Joiefull
 //
 //  Created by Yannick LEPLARD on 08/10/2024.
@@ -9,9 +9,9 @@ import SwiftUI
 
 
 
-struct CategoryListView: View {
-    @ObservedObject var viewModel: CatalogViewModel
-    @Binding var selectedItem: ClothingItem?
+struct JFCategoryListView: View {
+    @ObservedObject var viewModel: JFCatalogViewModel
+    @Binding var selectedItem: JFClothingItem?
 
     var body: some View {
         List {
@@ -29,15 +29,15 @@ struct CategoryListView: View {
                             
                             ForEach(filteredItems) { item in
                                 if UIDevice.current.userInterfaceIdiom == .pad {
-                                    ClothingItemCardView(item: item)
+                                    JFClothingItemCardView(viewModel: viewModel, item: item)
                                         .foregroundColor(.primary)
                                         .frame(width: 198, height: 242)
                                         .onTapGesture {
                                             selectedItem = item
                                         }
                                 } else {
-                                    NavigationLink(destination: ClothingItemView(item: item)) {
-                                        ClothingItemCardView(item: item)
+                                    NavigationLink(destination: JFClothingItemView(viewModel: viewModel, item: item)) {
+                                        JFClothingItemCardView(viewModel: viewModel, item: item)
                                             .foregroundColor(.primary)
                                             .frame(width: 198, height: 242)
                                     }
@@ -53,10 +53,10 @@ struct CategoryListView: View {
     }
 }
 
-struct CategoryListView_Previews: PreviewProvider {
+struct JFCategoryListView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryListView(
-            viewModel: CatalogViewModel.mock(),
+        JFCategoryListView(
+            viewModel: JFCatalogViewModel.mock(),
             selectedItem: .constant(nil)
         )
     }

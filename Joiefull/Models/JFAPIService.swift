@@ -10,25 +10,37 @@ import Foundation
 
 
 class JFAPIService {
-    static let BASE_URL = "https://raw.githubusercontent.com/OpenClassrooms-Student-Center/Cr-ez-une-interface-dynamique-et-accessible-avec-SwiftUI/main/api/clothes.json"
+    
+    static let BASE_URL = URL(string: "https://raw.githubusercontent.com/OpenClassrooms-Student-Center/Cr-ez-une-interface-dynamique-et-accessible-avec-SwiftUI/main/api/clothes.json")
+    private let session: URLSessionProtocol
+    
+    init(session: URLSessionProtocol = URLSession.shared) {
+            self.session = session
+        }
+
     
     func createClothesRequest() -> URLRequest {
-        var request = URLRequest(url: URL(string: JFAPIService.BASE_URL)!)
+        guard let url = JFAPIService.BASE_URL else {
+            fatalError("URL invalide")
+        }
+        
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         return request
     }
 
-    func askForClothes() async throws -> [ClothingItem] {
-        let (data, response) = try await URLSession.shared.data(for: createClothesRequest())
+    func askForClothes() async throws -> [JFClothingItem] {
+        let (data, response) = try await session.data(for: createClothesRequest())
         
         guard let httpResponse = response as? HTTPURLResponse else {
             throw JFError.requestResponse
         }
         
+        print("real ask for clothes statusCode : \(httpResponse.statusCode)")
         switch httpResponse.statusCode {
         case 200:
             do {
-                let clothes = try JSONDecoder().decode([ClothingItem].self, from: data)
+                let clothes = try JSONDecoder().decode([JFClothingItem].self, from: data)
                 return clothes
             } catch {
                 throw JFError.decodingJSON

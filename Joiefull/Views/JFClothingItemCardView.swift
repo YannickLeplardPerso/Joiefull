@@ -1,5 +1,5 @@
 //
-//  ClothingItemCardView.swift
+//  JFClothingItemCardView.swift
 //  Joiefull
 //
 //  Created by Yannick LEPLARD on 08/10/2024.
@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct ClothingItemCardView: View {
-    let item: ClothingItem
+struct JFClothingItemCardView: View {
+    @ObservedObject var viewModel: JFCatalogViewModel
+    let item: JFClothingItem
     
     var body: some View {
         VStack {
             ZStack {
-                AsyncImage(url: URL(string: item.picture.url)) { image in
+                AsyncImage(url: item.picture.url) { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fill) //.fit
                         .frame(width: 198, height: 198)
@@ -27,14 +28,14 @@ struct ClothingItemCardView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        LikeView(likes: item.likes)
-                            .padding([.bottom, .trailing], 8)
+                        JFLike(isLiked: item.isLiked) {
+                            viewModel.toggleLike(for: item)
+                        }
                     }
                 }
                 .padding([.bottom, .trailing], 20)
             }
             .frame(width: 198, height: 198)
-            
             
             HStack {
                 Text(item.name)
@@ -43,9 +44,7 @@ struct ClothingItemCardView: View {
                 Spacer()
                 Image(systemName: "star.fill")
                     .foregroundColor(.colorJFOrange)
-                // todo
-                Text("4.3")
-                    .padding(.trailing, 5)
+                JFRandomNote()
             }
             .frame(width: 198)
             
@@ -65,10 +64,10 @@ struct ClothingItemCardView: View {
     }
 }
 
-struct ClothingItemCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ClothingItemCardView(item: ClothingItem.mock())
-            .previewLayout(.sizeThatFits)
-            .padding()
-    }
-}
+//struct JFClothingItemCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ClothingItemCardView(viewModel: CatalogViewModel(), item: ClothingItem.mock())
+//            .previewLayout(.sizeThatFits)
+//            .padding()
+//    }
+//}

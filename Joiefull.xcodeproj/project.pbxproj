@@ -10,9 +10,20 @@
 		AC4765762CB3DBAA008F7324 /* JoiefullApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4765752CB3DBAA008F7324 /* JoiefullApp.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		ACBD34B62CD3E3B4003E4556 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC47656A2CB3DBAA008F7324 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC4765712CB3DBAA008F7324;
+			remoteInfo = Joiefull;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		AC4765722CB3DBAA008F7324 /* Joiefull.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joiefull.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC4765752CB3DBAA008F7324 /* JoiefullApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiefullApp.swift; sourceTree = "<group>"; };
+		ACBD34B22CD3E3B4003E4556 /* JoiefullTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoiefullTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -21,10 +32,22 @@
 			path = Joiefull;
 			sourceTree = "<group>";
 		};
+		ACBD34B32CD3E3B4003E4556 /* JoiefullTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = JoiefullTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AC47656F2CB3DBAA008F7324 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACBD34AF2CD3E3B4003E4556 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,6 +62,7 @@
 			children = (
 				AC4765752CB3DBAA008F7324 /* JoiefullApp.swift */,
 				AC4765742CB3DBAA008F7324 /* Joiefull */,
+				ACBD34B32CD3E3B4003E4556 /* JoiefullTests */,
 				AC4765732CB3DBAA008F7324 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				AC4765722CB3DBAA008F7324 /* Joiefull.app */,
+				ACBD34B22CD3E3B4003E4556 /* JoiefullTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +101,29 @@
 			productReference = AC4765722CB3DBAA008F7324 /* Joiefull.app */;
 			productType = "com.apple.product-type.application";
 		};
+		ACBD34B12CD3E3B4003E4556 /* JoiefullTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACBD34BA2CD3E3B4003E4556 /* Build configuration list for PBXNativeTarget "JoiefullTests" */;
+			buildPhases = (
+				ACBD34AE2CD3E3B4003E4556 /* Sources */,
+				ACBD34AF2CD3E3B4003E4556 /* Frameworks */,
+				ACBD34B02CD3E3B4003E4556 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ACBD34B72CD3E3B4003E4556 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				ACBD34B32CD3E3B4003E4556 /* JoiefullTests */,
+			);
+			name = JoiefullTests;
+			packageProductDependencies = (
+			);
+			productName = JoiefullTests;
+			productReference = ACBD34B22CD3E3B4003E4556 /* JoiefullTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -83,11 +131,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					AC4765712CB3DBAA008F7324 = {
 						CreatedOnToolsVersion = 16.0;
+					};
+					ACBD34B12CD3E3B4003E4556 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = AC4765712CB3DBAA008F7324;
 					};
 				};
 			};
@@ -106,12 +158,20 @@
 			projectRoot = "";
 			targets = (
 				AC4765712CB3DBAA008F7324 /* Joiefull */,
+				ACBD34B12CD3E3B4003E4556 /* JoiefullTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AC4765702CB3DBAA008F7324 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACBD34B02CD3E3B4003E4556 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -129,7 +189,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ACBD34AE2CD3E3B4003E4556 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ACBD34B72CD3E3B4003E4556 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC4765712CB3DBAA008F7324 /* Joiefull */;
+			targetProxy = ACBD34B62CD3E3B4003E4556 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AC47657E2CB3DBAB008F7324 /* Debug */ = {
@@ -257,7 +332,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "3 en cours";
+				CURRENT_PROJECT_VERSION = "4 en cours";
 				DEVELOPMENT_ASSET_PATHS = "\"Joiefull/Preview Content\"";
 				DEVELOPMENT_TEAM = 9L643QCQAN;
 				ENABLE_PREVIEWS = YES;
@@ -290,7 +365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "3 en cours";
+				CURRENT_PROJECT_VERSION = "4 en cours";
 				DEVELOPMENT_ASSET_PATHS = "\"Joiefull/Preview Content\"";
 				DEVELOPMENT_TEAM = 9L643QCQAN;
 				ENABLE_PREVIEWS = YES;
@@ -317,6 +392,52 @@
 			};
 			name = Release;
 		};
+		ACBD34B82CD3E3B4003E4556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9L643QCQAN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leplard.JoiefullTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Joiefull.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Joiefull";
+			};
+			name = Debug;
+		};
+		ACBD34B92CD3E3B4003E4556 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9L643QCQAN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leplard.JoiefullTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Joiefull.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Joiefull";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -334,6 +455,15 @@
 			buildConfigurations = (
 				AC4765812CB3DBAB008F7324 /* Debug */,
 				AC4765822CB3DBAB008F7324 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACBD34BA2CD3E3B4003E4556 /* Build configuration list for PBXNativeTarget "JoiefullTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACBD34B82CD3E3B4003E4556 /* Debug */,
+				ACBD34B92CD3E3B4003E4556 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

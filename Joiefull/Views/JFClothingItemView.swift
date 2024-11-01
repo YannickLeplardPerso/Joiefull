@@ -1,5 +1,5 @@
 //
-//  ClothingItemView.swift
+//  JFClothingItemView.swift
 //  Joiefull
 //
 //  Created by Yannick LEPLARD on 08/10/2024.
@@ -7,17 +7,20 @@
 
 import SwiftUI
 
-struct ClothingItemView: View {
-    let item: ClothingItem
+
+
+struct JFClothingItemView: View {
+    @ObservedObject var viewModel: JFCatalogViewModel
+    let item: JFClothingItem
     @State private var rating: Int = 0
     @State private var feedback: String = ""
-    // temp
     @State private var isSharing = false
     
     var body: some View {
         ScrollView {
             VStack {
-                AsyncImage(url: URL(string: item.picture.url)) { image in
+//                AsyncImage(url: URL(string: item.picture.url)) { image in
+                AsyncImage(url: item.picture.url) { image in
                     image.resizable()
                         .scaledToFit()
                         .cornerRadius(20)
@@ -25,7 +28,6 @@ struct ClothingItemView: View {
                             VStack {
                                 HStack {
                                     Spacer()
-                                    // Share button functionality
                                     Button(action: {
                                         isSharing.toggle()
                                     }) {
@@ -36,21 +38,18 @@ struct ClothingItemView: View {
                                             .padding([.top, .trailing], 16)
                                     }
                                     .sheet(isPresented: $isSharing) {
-                                        ActivityViewController(activityItems: [item.picture.url])
-                                                            }
-//                                    Image("Partager")
-//                                        .resizable()
-//                                        .scaledToFit()
-//                                        .frame(width: 18, height: 18)
-//                                        .padding(16)
+                                        JFActivityViewController(activityItems: [ImageRenderer(content: image).uiImage as Any])
+                                    }
                                 }
                                 
                                 Spacer()
                                 
                                 HStack {
                                     Spacer()
-                                    LikeView(likes: item.likes)
-                                        .padding(16)
+                                    JFLike(isLiked: item.isLiked) {
+                                        viewModel.toggleLike(for: item)
+                                    }
+                                    .padding(16)
                                 }
                             }
                         )
@@ -67,7 +66,7 @@ struct ClothingItemView: View {
                     Spacer()
                     Image(systemName: "star.fill")
                         .foregroundColor(.colorJFOrange)
-                    Text("4.3")
+                    JFRandomNote()
                 }
                 .padding(.bottom, 5)
                 
@@ -121,7 +120,6 @@ struct ClothingItemView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-                    //.frame(maxWidth: .infinity)
             }
             .padding(.horizontal, 16)
             .frame(maxWidth: 392)
@@ -129,23 +127,11 @@ struct ClothingItemView: View {
     }
 }
 
-// temp
-// UIActivityViewController wrapper for SwiftUI
-struct ActivityViewController: UIViewControllerRepresentable {
-    let activityItems: [Any]
-
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        return UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-    }
-
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
-}
 
 
-
-struct ClothingItemView_Previews: PreviewProvider {
+struct JFClothingItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ClothingItemView(item: ClothingItem.mock())
+        JFClothingItemView(viewModel: JFCatalogViewModel(), item: JFClothingItem.mock())
             .previewLayout(.sizeThatFits)
             .padding()
     }
