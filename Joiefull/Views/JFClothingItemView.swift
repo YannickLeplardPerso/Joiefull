@@ -19,7 +19,6 @@ struct JFClothingItemView: View {
     var body: some View {
         ScrollView {
             VStack {
-//                AsyncImage(url: URL(string: item.picture.url)) { image in
                 AsyncImage(url: item.picture.url) { image in
                     image.resizable()
                         .scaledToFit()
@@ -31,14 +30,30 @@ struct JFClothingItemView: View {
                                     Button(action: {
                                         isSharing.toggle()
                                     }) {
-                                        Image("Partager")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 18, height: 18)
-                                            .padding([.top, .trailing], 16)
+                                        ZStack {
+                                            Circle()
+                                                .fill(Color.white.opacity(0.4))
+                                                .frame(width: 36, height: 36)
+                                            
+                                            Image("Partager")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 18, height: 18)
+                                        }
+                                        .padding([.top, .trailing], 16)
+//                                        Image("Partager")
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 18, height: 18)
+//                                            .padding([.top, .trailing], 16)
+//                                            .background(
+//                                                Circle()
+//                                                    .fill(Color.white.opacity(0.5))
+//                                                    .frame(width: 30, height: 30)
+//                                            )
                                     }
                                     .sheet(isPresented: $isSharing) {
-                                        JFActivityViewController(activityItems: [ImageRenderer(content: image).uiImage as Any])
+                                        JFActivityViewController(activityItems: ["\(item.name) - Price: \(item.price)€", item.picture.url])
                                     }
                                 }
                                 
@@ -88,7 +103,7 @@ struct JFClothingItemView: View {
                 
                 // stars
                 HStack {
-                    // remplacer par avatar ?
+                    // à remplacer par avatar
                     Image(systemName: "figure.climbing")
                         .resizable()
                         .scaledToFill()

@@ -45,27 +45,6 @@ class JFCatalogViewModel: ObservableObject {
         }
     }
     
-//    func fetchClothes() {
-//        Task {
-//            await fetchClothesAsync()
-//        }
-//    }
-//    
-//    @MainActor
-//    private func fetchClothesAsync() async {
-//        isLoading = true
-//        error = .no
-//        
-//        do {
-//            let clothes = try await apiService.askForClothes()
-//            self.clothes = clothes
-//            self.isLoading = false
-//        } catch {
-//            self.error = .fetchClothes
-//            self.isLoading = false
-//        }
-//    }
-    
     func toggleLike(for item: JFClothingItem) {
         if let index = clothes.firstIndex(where: { $0.id == item.id }) {
             clothes[index].isLiked.toggle()

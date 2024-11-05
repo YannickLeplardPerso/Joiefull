@@ -36,7 +36,6 @@ class JFAPIService {
             throw JFError.requestResponse
         }
         
-        print("real ask for clothes statusCode : \(httpResponse.statusCode)")
         switch httpResponse.statusCode {
         case 200:
             do {
