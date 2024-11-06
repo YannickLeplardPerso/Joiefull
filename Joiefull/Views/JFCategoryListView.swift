@@ -22,6 +22,7 @@ struct JFCategoryListView: View {
                     .font(.title2)
                     .foregroundStyle(.black)
                     .bold()
+                    .accessibilityAddTraits(.isHeader)
                 ) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
@@ -35,12 +36,18 @@ struct JFCategoryListView: View {
                                         .onTapGesture {
                                             selectedItem = item
                                         }
+                                        .accessibilityLabel("\(item.name) \(item.price), dans la catégorie \(translatedCategory)")
+                                        .accessibilityAddTraits(.isButton)
+                                        .accessibilityHint("Double tap pour voir les détails")
                                 } else {
                                     NavigationLink(destination: JFClothingItemView(viewModel: viewModel, item: item)) {
                                         JFClothingItemCardView(viewModel: viewModel, item: item)
                                             .foregroundColor(.primary)
                                             .frame(width: 198, height: 242)
                                     }
+                                    .accessibilityLabel("\(item.name) \(String(format: "%.2f", item.price)) euros, dans la catégorie \(translatedCategory)")
+                                    .accessibilityAddTraits(.isButton)
+                                    .accessibilityHint("Double tap pour voir les détails")
                                 }
                             }
                         }

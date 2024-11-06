@@ -12,6 +12,7 @@ struct JoiefullApp: App {
     var body: some Scene {
         WindowGroup {
             JFSplashScreenView()
+                //.accessibilityLanguage("fr")
         }
     }
 }

@@ -39,6 +39,7 @@ struct JFClothingItem: Decodable, Identifiable {
     let price: Double
     let original_price: Double
     
+    let note = String(format: "%.2f", Double.random(in: 3.0...5.0))
     var isLiked: Bool = false
     
     var categoryFr: String {
@@ -69,7 +70,6 @@ struct JFClothingItem: Decodable, Identifiable {
         self.original_price = original_price
     }
 
-//    isLiked n'est pas dans le JSON
     private enum CodingKeys: String, CodingKey {
         case id
         case picture

@@ -22,13 +22,14 @@ struct JFClothingItemCardView: View {
                         .padding()
                 } placeholder: {
                     ProgressView()
+                        .accessibilityLabel("Chargement de l'image")
                 }
                                     
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
-                        JFLike(isLiked: item.isLiked) {
+                        JFLike(isLiked: item.isLiked, isLikeEnabled: false) {
                             viewModel.toggleLike(for: item)
                         }
                     }
@@ -44,7 +45,7 @@ struct JFClothingItemCardView: View {
                 Spacer()
                 Image(systemName: "star.fill")
                     .foregroundColor(.colorJFOrange)
-                JFRandomNote()
+                Text(item.note)
             }
             .frame(width: 198)
             
@@ -64,10 +65,10 @@ struct JFClothingItemCardView: View {
     }
 }
 
-//struct JFClothingItemCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ClothingItemCardView(viewModel: CatalogViewModel(), item: ClothingItem.mock())
-//            .previewLayout(.sizeThatFits)
-//            .padding()
-//    }
-//}
+struct JFClothingItemCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        JFClothingItemCardView(viewModel: JFCatalogViewModel(), item: JFClothingItem.mock())
+            .previewLayout(.sizeThatFits)
+            .padding()
+    }
+}

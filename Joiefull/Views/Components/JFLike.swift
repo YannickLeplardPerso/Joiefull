@@ -11,20 +11,22 @@ import SwiftUI
 
 struct JFLike: View {
     var isLiked: Bool
+    var isLikeEnabled: Bool = true
     var toggleLike: () -> Void
     
     var body: some View {
-        HStack {
+        Button(action: toggleLike) {
             Image(systemName: "heart.fill")
                 .foregroundColor(isLiked ? .red : .gray)
                 .bold()
-                .onTapGesture {
-                    toggleLike()
-                }
+                .padding(8)
+                .background(Color.white)
+                .cornerRadius(20)
         }
-        .padding(8)
-        .background(Color.white)
-        .cornerRadius(20)
+        .disabled(!isLikeEnabled)
+//        .accessibilityLabel(isLiked ? "J'aime déjà \(item.name)" : "Ajouter \(item.name) aux favoris")
+//        .accessibilityAddTraits(.isButton)
+//        .accessibilityHint("Double tap pour \(isLiked ? "retirer" : "ajouter") des favoris")      
     }
 }
 

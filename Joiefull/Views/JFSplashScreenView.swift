@@ -9,7 +9,7 @@ import SwiftUI
 
 struct JFSplashScreenView: View {
     private let splashScreenDuration: TimeInterval = 2
-    @State private var isActive = false // Gérer l'état de l'écran de démarrage
+    @State private var isActive = false
 
     var body: some View {
         VStack {

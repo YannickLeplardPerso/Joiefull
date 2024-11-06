@@ -23,6 +23,7 @@ struct JFClothingItemView: View {
                     image.resizable()
                         .scaledToFit()
                         .cornerRadius(20)
+                        .accessibilityHidden(true)
                         .overlay(
                             VStack {
                                 HStack {
@@ -41,17 +42,10 @@ struct JFClothingItemView: View {
                                                 .frame(width: 18, height: 18)
                                         }
                                         .padding([.top, .trailing], 16)
-//                                        Image("Partager")
-//                                            .resizable()
-//                                            .scaledToFit()
-//                                            .frame(width: 18, height: 18)
-//                                            .padding([.top, .trailing], 16)
-//                                            .background(
-//                                                Circle()
-//                                                    .fill(Color.white.opacity(0.5))
-//                                                    .frame(width: 30, height: 30)
-//                                            )
                                     }
+                                    .accessibilityLabel("Partager \(item.name)")
+                                    .accessibilityAddTraits(.isButton)
+                                    .accessibilityHint("Double tap pour partager")
                                     .sheet(isPresented: $isSharing) {
                                         JFActivityViewController(activityItems: ["\(item.name) - Price: \(item.price)€", item.picture.url])
                                     }
@@ -65,11 +59,15 @@ struct JFClothingItemView: View {
                                         viewModel.toggleLike(for: item)
                                     }
                                     .padding(16)
+                                    .accessibilityLabel(item.isLiked ? "J'aime déjà \(item.name)" : "Ajouter \(item.name) aux favoris")
+                                    .accessibilityAddTraits(.isButton)
+                                    .accessibilityHint("Double tap pour \(item.isLiked ? "retirer des" : "ajouter aux") favoris")
                                 }
                             }
                         )
                 } placeholder: {
                     ProgressView()
+                        .accessibilityLabel("Chargement de l'image")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 5)
@@ -81,8 +79,10 @@ struct JFClothingItemView: View {
                     Spacer()
                     Image(systemName: "star.fill")
                         .foregroundColor(.colorJFOrange)
-                    JFRandomNote()
+                    Text(item.note)
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("\(item.name), Note : \(item.note)")
                 .padding(.bottom, 5)
                 
                 HStack {
@@ -93,6 +93,7 @@ struct JFClothingItemView: View {
                         .font(.subheadline)
                         .strikethrough()
                 }
+                .accessibilityLabel("Prix: \(String(format: "%.2f", item.price)) euros, au lieu de \(String(format: "%.2f", item.original_price)) euros")
                 .padding(.bottom, 5)
                 
                 // description
@@ -100,6 +101,7 @@ struct JFClothingItemView: View {
                     .font(.subheadline)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 10)
+                    .accessibilityLabel("Description: \(item.picture.description)")
                 
                 // stars
                 HStack {
@@ -111,6 +113,7 @@ struct JFClothingItemView: View {
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.gray, lineWidth: 1))
                         .padding(.trailing, 10)
+                        .accessibilityHidden(true)
                     
                     HStack {
                         ForEach(1..<6) { star in
@@ -121,6 +124,29 @@ struct JFClothingItemView: View {
                                 .onTapGesture {
                                     rating = star
                                 }
+                                .accessibilityHidden(true)  // Cache les étoiles individuelles pour VoiceOver
+                        }
+                    }
+                    .accessibilityElement(children: .combine)  // Combine tout en un seul élément
+                    .accessibilityLabel("Notation")
+                    .accessibilityValue("\(rating) étoiles sur 5")
+                    .accessibilityAddTraits(.allowsDirectInteraction)
+                    .accessibilityAdjustableAction { direction in
+                        switch direction {
+                        case .increment:
+                            if rating < 5 {
+                                rating += 1
+                            } else {
+                                UIAccessibility.post(notification: .announcement, argument: "Maximum atteint : 5 étoiles")
+                            }
+                        case .decrement:
+                            if rating > 0 {
+                                rating -= 1
+                            } else {
+                                UIAccessibility.post(notification: .announcement, argument: "Minimum atteint : 0 étoiles")
+                            }
+                        @unknown default:
+                            break
                         }
                     }
                 }
@@ -135,6 +161,8 @@ struct JFClothingItemView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.gray, lineWidth: 1)
                     )
+                    .accessibilityLabel("Votre avis sur \(item.name)")
+                    .accessibilityHint("Écrivez votre impression sur ce vêtement")
             }
             .padding(.horizontal, 16)
             .frame(maxWidth: 392)

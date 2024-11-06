@@ -30,6 +30,7 @@ struct JFCatalogView: View {
                         .foregroundColor(.gray)
                 }
             }
+            .accessibilityElement(children: .contain)
             .onAppear {
                 Task {
                     await viewModel.fetchClothes()
@@ -51,16 +52,6 @@ struct JFCatalogView: View {
 
 struct JFCatalogView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            // Preview for iPad
-            JFCatalogView()
-                .previewDevice("iPad Pro (12.9-inch)")
-                .previewDisplayName("iPad Pro (12.9-inch)")
-            
-            // Preview for iPhone
-            JFCatalogView()
-                .previewDevice("iPhone 16 Pro")
-                .previewDisplayName("iPhone 16 Pro")
-        }
+        JFCatalogView()
     }
 }
