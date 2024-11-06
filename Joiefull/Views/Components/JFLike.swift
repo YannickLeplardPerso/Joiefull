@@ -22,11 +22,10 @@ struct JFLike: View {
                 .padding(8)
                 .background(Color.white)
                 .cornerRadius(20)
+                .frame(minWidth: 44, minHeight: 44)
+                .contentShape(Rectangle())  
         }
-        .disabled(!isLikeEnabled)
-//        .accessibilityLabel(isLiked ? "J'aime déjà \(item.name)" : "Ajouter \(item.name) aux favoris")
-//        .accessibilityAddTraits(.isButton)
-//        .accessibilityHint("Double tap pour \(isLiked ? "retirer" : "ajouter") des favoris")      
+        .disabled(!isLikeEnabled)     
     }
 }
 

@@ -34,7 +34,7 @@ struct JFClothingItemView: View {
                                         ZStack {
                                             Circle()
                                                 .fill(Color.white.opacity(0.4))
-                                                .frame(width: 36, height: 36)
+                                                .frame(width: 44, height: 44)
                                             
                                             Image("Partager")
                                                 .resizable()
@@ -119,7 +119,8 @@ struct JFClothingItemView: View {
                         ForEach(1..<6) { star in
                             Image(systemName: star <= rating ? "star.fill" : "star")
                                 .resizable()
-                                .frame(width: 24, height: 24)
+                                .frame(width: 44, height: 44)
+                                .contentShape(Rectangle())
                                 .foregroundColor(star <= rating ? .yellow : .gray)
                                 .onTapGesture {
                                     rating = star
